@@ -1,30 +1,18 @@
-import styled from "styled-components";
-import Circle from "./Circle";
+import styled, { createGlobalStyle } from "styled-components";
 import { useState } from "react";
+import Router from "./Router";
+
+const GlobalStyle = createGlobalStyle`
+  body{
+    color:red;
+  }
+`
 
 function App() {
-  const [value, setValue] = useState("");
-
-  function onChange(event: React.FormEvent<HTMLInputElement>) {
-    const {
-      currentTarget: { value },
-    } = event;
-    setValue(value);
-  }
-
-  function onSubmit(event: React.FormEvent<HTMLFormElement>) {
-    event.preventDefault();
-    console.log("hello", value);
-  }
-
-  return (
-    <div>
-      <form onSubmit={onSubmit}>
-        <input value={value} onChange={onChange} type="text" placeholder="username"/>
-        <button type="submit">Log in</button>
-      </form>
-    </div>
-  );
+ return <>
+  <GlobalStyle/>
+  <Router/>
+  </>
 }
 
 export default App;
